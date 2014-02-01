@@ -75,22 +75,19 @@
             <a class="btn btn-info btn-new">New User</a>
           </div>
         </div>
-        <div id="users-search-form-region" class="col-sm-3 col-sm-offset-7">
+        <div class="col-sm-3 col-sm-offset-7">
+          <form role="form">
+            <fieldset>
+              <div class="row">
+                <div class="form-group col-sm-12">
+                  <input id="query" type="text" class="form-control" placeholder="Filter by Name">
+                </div>
+              </div>
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
-  </script>
-
-  <script id="users-search-form" type="text/template">
-    <form role="form">
-      <fieldset>
-        <div class="row">
-          <div class="form-group col-sm-12">
-            <input id="name" type="text" class="form-control" placeholder="Filter by Name">
-          </div>
-        </div>
-      </fieldset>
-    </form>
   </script>
 
   <script id="users-index-list" type="text/template">

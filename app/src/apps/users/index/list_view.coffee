@@ -26,7 +26,7 @@ class Index.UserListView extends Marionette.CompositeView
   itemViewContainer: "tbody"
   template: "#users-index-list"
   triggers:
-    "click .delete-button": "delete:selectedUsers"
+    "click .delete-button": "users:selected:delete"
   bindings:
     ".selected-info":
       observe: "selectedUsers"
