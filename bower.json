@@ -1,0 +1,22 @@
+{
+  "name": "backbone.marionette.example",
+  "version": "0.1.0",
+  "authors": [
+    "monzou <1984tkr@gmail.com>"
+  ],
+  "description": "Example CRUD app with Backbone.Marionette",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore.string": "~2.3.3",
+    "marionette": "~1.6.0",
+    "backbone.stickit": "0.7.0",
+    "bootstrap": "~3.1.0"
+  }
+}
