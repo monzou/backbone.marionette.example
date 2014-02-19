@@ -36,7 +36,7 @@ class Common.ResourceRouter extends Marionette.AppRouter
       @_getController()?[name]?(params...)
 
   routeFor: (resourceRoute, params...) ->
-    route = CRUD.linkTo resourceRoute
+    route = resourceRoute
     route = @extractParams route, params
     route = route.replace /(\(|\?|\:|\*).*$/, ""
     route
