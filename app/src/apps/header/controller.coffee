@@ -4,7 +4,7 @@ class Header.Controller extends Marionette.Controller
 
   constructor: (@region) ->
     @model = new Header.ViewModel
-    CRUD.on "set:menu:active", (menu) => @update menu
+    @listenTo CRUD, "set:menu:active", (menu) => @update menu
 
   update: (menu) ->
     @model.set "menu", menu

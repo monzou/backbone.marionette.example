@@ -10,11 +10,11 @@ class Index.UserListViewModel extends CRUD.Common.ViewModel
 
   constructor: (attributes={}, options) ->
     collection = attributes.collection = new Common.UserViewCollection
-    collection.on "change:selected", => @trigger "change:selected"
+    @listenTo collection, "change:selected", => @trigger "change:selected"
     super attributes, options
 
   updateCollection: (models) ->
-    collection = @get("collection")
+    collection = @get "collection"
     collection.reset _.map models, (model) -> new Common.UserViewModel {}, model: model
     collection.clearSelection()
     collection

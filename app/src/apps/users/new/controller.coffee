@@ -1,15 +1,15 @@
 Model = CRUD.module "Model"
 New   = CRUD.module "Users.New"
 
-class New.Controller
+class New.Controller extends Marionette.Controller
 
   constructor: (@region) ->
     _.bindAll @, "save", "goToIndex"
 
   show: ->
     view = @createView()
-    view.on "user:form:save", @save
-    view.on "user:form:cancel", @goToIndex
+    @listenTo view, "user:form:save", @save
+    @listenTo view, "user:form:cancel", @goToIndex
     @region.show view
 
   createView: ->
