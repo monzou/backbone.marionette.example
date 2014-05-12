@@ -4,6 +4,8 @@ class Index.UserRowView extends Marionette.ItemView
 
   tagName: "tr"
   template: "#user-row"
+  behaviors:
+    binding: {}
   bindings:
     "input[type=checkbox]": "selected"
     ".fullName":
@@ -14,12 +16,6 @@ class Index.UserRowView extends Marionette.ItemView
       ]
     ".email": "email"
 
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()
-
 class Index.UserListView extends Marionette.CompositeView
 
   itemView: Index.UserRowView
@@ -27,6 +23,8 @@ class Index.UserListView extends Marionette.CompositeView
   template: "#users-index-list"
   triggers:
     "click .delete-button": "users:selected:delete"
+  behaviors:
+    binding: {}
   bindings:
     ".selected-info":
       observe: "selectedUsers"
@@ -40,10 +38,3 @@ class Index.UserListView extends Marionette.CompositeView
         name: "disabled"
         onGet: (value) -> if value and value.length > 0 then "" else "disabled"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()
-    

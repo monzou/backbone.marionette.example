@@ -4,6 +4,8 @@ Index  = CRUD.module "Users.Index"
 class Index.HeaderView extends Marionette.ItemView
 
   template: "#users-index-header"
+  behaviors:
+    binding: {}
   bindings:
     "#query": "query"
     ".btn-new":
@@ -11,9 +13,3 @@ class Index.HeaderView extends Marionette.ItemView
         name: "href"
         onGet: -> CRUD.request "route:users:new"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()

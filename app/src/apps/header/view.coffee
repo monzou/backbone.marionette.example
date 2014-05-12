@@ -4,6 +4,8 @@ class Header.View extends Marionette.ItemView
 
   template: "#header"
 
+  behaviors:
+    binding: {}
   bindings:
     ".activeMenu": "menu"
     ".navbar-brand":
@@ -11,9 +13,3 @@ class Header.View extends Marionette.ItemView
         name: "href"
         onGet: -> CRUD.request "route:users:list"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()

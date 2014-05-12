@@ -49,7 +49,8 @@ module.exports = (grunt) ->
       compile:
         files:
           "app/scripts/main.js": [
-            "app/src/main.coffee"
+            "app/src/initializer.coffee"
+            "app/src/app.coffee"
             "app/src/launcher.coffee"
             "app/src/lib/**/*.coffee"
             "app/src/common/**/*.coffee"
@@ -69,4 +70,4 @@ module.exports = (grunt) ->
     "open"
     "watch"
   ]
-  
+
