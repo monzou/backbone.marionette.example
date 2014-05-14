@@ -2,27 +2,30 @@
 _        = require "underscore"
 Backbone = require "backbone"
 
-CRUD = new Backbone.Marionette.Application()
+class CRUD extends Backbone.Marionette.Application
 
-CRUD.Configuration =
   root: ""
   version: "v1"
-  loggingEnabled: true
 
-CRUD.navigate = (route, options={}) ->
-  root = CRUD.Configuration.root
-  route = route.replace root, "" if _.str.startsWith route, root
-  Backbone.history.navigate route, options
+  constructor: ->
+    super
+    @setupRegions()
+    @setupXhr()
 
-CRUD.getCurrentRoute = ->
-  Backbone.history.fragment
+  setupRegions: ->
+    @addRegions
+      headerRegion: "#header-region"
+      mainRegion: "#main-region"
 
-CRUD.linkTo = (relative = "") ->
-  root = CRUD.Configuration.root
-  "#{root}/#{relative}"
+  setupXhr: ->
+    $.ajaxSettings.timeout = 5000
+    $.ajaxSettings.cache = false
 
-CRUD.addRegions
-  headerRegion: "#header-region"
-  mainRegion: "#main-region"
+  navigate: (route, options={}) ->
+    route = route.replace @root, "" if _.str.startsWith route, @root
+    Backbone.history.navigate route, options
 
-module.exports = CRUD
+  getCurrentRoute: ->
+    Backbone.history.fragment
+
+module.exports = new CRUD
