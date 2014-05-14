@@ -1,22 +1,7 @@
-CRUD = window.CRUD = new Marionette.Application()
+"use strict"
+require "app/launcher"
+require "app/apps/header/app"
+require "app/apps/users/app"
 
-CRUD.Configuration =
-  root: ""
-  version: "v1"
-  loggingEnabled: true
-
-CRUD.addRegions
-  headerRegion: "#header-region"
-  mainRegion: "#main-region"
-
-CRUD.navigate = (route, options={}) ->
-  root = CRUD.Configuration.root
-  route = route.replace root, "" if _.startsWith route, root
-  Backbone.history.navigate route, options
-
-CRUD.getCurrentRoute = ->
-  Backbone.history.fragment
-
-CRUD.linkTo = (relative = "") ->
-  root = CRUD.Configuration.root
-  "#{root}/#{relative}"
+CRUD = require "app/app"
+$ => CRUD.start()

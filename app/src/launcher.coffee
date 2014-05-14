@@ -1,4 +1,9 @@
-class CRUD.Launcher
+"use strict"
+_        = require "underscore"
+Backbone = require "backbone"
+CRUD     = require "app/app"
+
+class Launcher
 
   launch: (root = "") ->
     @setupAnchorHandler root
@@ -12,13 +17,12 @@ class CRUD.Launcher
         prop: $(@).prop "href"
         attr: $(@).attr "href"
       base = "#{location.protocol}//#{location.host}/#{root}"
-      if _.startsWith href.prop, base
+      if _.str.startsWith href.prop, base
         e.preventDefault()
         CRUD.navigate href.attr, trigger: true
 
   startRouting: (root) ->
     Backbone.history.start pushState: true, root: root
 
-CRUD.addInitializer ->
-  launcher = new CRUD.Launcher
-  CRUD.on "initialize:after", -> launcher.launch CRUD.Configuration.root
+launcher = new Launcher
+CRUD.on "initialize:after", -> launcher.launch CRUD.Configuration.root

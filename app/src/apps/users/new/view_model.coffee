@@ -1,7 +1,7 @@
-New    = CRUD.module "Users.New"
-Common = CRUD.module "Users.Common"
+"use strict"
+FormViewModel = require "app/apps/users/common/model/user_form"
 
-class New.ViewModel extends Common.FormViewModel
+module.exports = class ViewModel extends FormViewModel
 
   action: "New"
   

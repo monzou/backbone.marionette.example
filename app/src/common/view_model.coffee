@@ -1,6 +1,8 @@
-Common = CRUD.module "Common"
+"use strict"
+_        = require "underscore"
+Backbone = require "backbone"
 
-class Common.ViewModel extends Backbone.Model
+module.exports = class ViewModel extends Backbone.Model
 
   constructor: (attributes, options) ->
     super attributes, options

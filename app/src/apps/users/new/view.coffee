@@ -1,4 +1,4 @@
-New    = CRUD.module "Users.New"
-Common = CRUD.module "Users.Common"
+"use strict"
+FormView = require "app/apps/users/common/view/user_form"
 
-class New.View extends Common.FormView
+module.exports = class View extends FormView

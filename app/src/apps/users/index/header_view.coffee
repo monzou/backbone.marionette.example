@@ -1,9 +1,12 @@
-Search = CRUD.module "Users.Search"
-Index  = CRUD.module "Users.Index"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Index.HeaderView extends Marionette.ItemView
+module.exports = class HeaderView extends Backbone.Marionette.ItemView
 
   template: "#users-index-header"
+  behaviors:
+    binding: {}
   bindings:
     "#query": "query"
     ".btn-new":
@@ -11,9 +14,3 @@ class Index.HeaderView extends Marionette.ItemView
         name: "href"
         onGet: -> CRUD.request "route:users:new"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()

@@ -1,3 +1,4 @@
-Header = CRUD.module "Header"
+"use strict"
+ViewModel = require "app/common/view_model"
 
-class Header.ViewModel extends CRUD.Common.ViewModel
+module.exports = class HeaderViewModel extends ViewModel

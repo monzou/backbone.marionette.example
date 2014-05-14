@@ -1,9 +1,13 @@
-Header = CRUD.module "Header"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Header.View extends Marionette.ItemView
+module.exports = class HeaderView extends Backbone.Marionette.ItemView
 
   template: "#header"
 
+  behaviors:
+    binding: {}
   bindings:
     ".activeMenu": "menu"
     ".navbar-brand":
@@ -11,9 +15,3 @@ class Header.View extends Marionette.ItemView
         name: "href"
         onGet: -> CRUD.request "route:users:list"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()

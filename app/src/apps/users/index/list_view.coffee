@@ -1,9 +1,13 @@
-Index = CRUD.module "Users.Index"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Index.UserRowView extends Marionette.ItemView
+class UserRowView extends Backbone.Marionette.ItemView
 
   tagName: "tr"
   template: "#user-row"
+  behaviors:
+    binding: {}
   bindings:
     "input[type=checkbox]": "selected"
     ".fullName":
@@ -14,19 +18,15 @@ class Index.UserRowView extends Marionette.ItemView
       ]
     ".email": "email"
 
-  onRender: ->
-    @stickit()
+module.exports = class UserListView extends Backbone.Marionette.CompositeView
 
-  onClose: ->
-    @unstickit()
-
-class Index.UserListView extends Marionette.CompositeView
-
-  itemView: Index.UserRowView
+  itemView: UserRowView
   itemViewContainer: "tbody"
   template: "#users-index-list"
   triggers:
     "click .delete-button": "users:selected:delete"
+  behaviors:
+    binding: {}
   bindings:
     ".selected-info":
       observe: "selectedUsers"
@@ -40,10 +40,3 @@ class Index.UserListView extends Marionette.CompositeView
         name: "disabled"
         onGet: (value) -> if value and value.length > 0 then "" else "disabled"
       ]
-
-  onRender: ->
-    @stickit()
-
-  onClose: ->
-    @unstickit()
-    

@@ -1,6 +1,9 @@
-Common = CRUD.module "Common"
+"use strict"
+_        = require "underscore"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Common.ResourceRouter extends Marionette.AppRouter
+module.exports = class ResourceRouter extends Backbone.Marionette.AppRouter
 
   route: (route, name, callback) ->
     resourceRoute = @toResourceRoute route, name
@@ -49,4 +52,3 @@ class Common.ResourceRouter extends Marionette.AppRouter
         param = encodeURIComponent param
       route = route.replace /(?:\:|\*)[^\/]+/, param
     route
-

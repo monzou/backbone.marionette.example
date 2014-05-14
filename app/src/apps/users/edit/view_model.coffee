@@ -1,7 +1,7 @@
-Edit   = CRUD.module "Users.Edit"
-Common = CRUD.module "Users.Common"
+"use strict"
+FormViewModel = require "app/apps/users/common/model/user_form"
 
-class Edit.ViewModel extends Common.FormViewModel
+module.exports = class ViewModel extends FormViewModel
 
   action: "Edit"
   
