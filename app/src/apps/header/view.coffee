@@ -1,6 +1,8 @@
-Header = CRUD.module "Header"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Header.View extends Marionette.ItemView
+module.exports = class HeaderView extends Backbone.Marionette.ItemView
 
   template: "#header"
 

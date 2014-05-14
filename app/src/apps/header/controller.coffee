@@ -1,16 +1,20 @@
-Header = CRUD.module "Header"
+"use strict"
+Backbone        = require "backbone"
+CRUD            = require "app/app"
+HeaderViewModel = require "app/apps/header/view_model"
+HeaderView      = require "app/apps/header/view"
 
-class Header.Controller extends Marionette.Controller
+module.exports = class HeaderController extends Backbone.Marionette.Controller
 
   constructor: (@region) ->
-    @model = new Header.ViewModel
+    @model = new HeaderViewModel
     @listenTo CRUD, "set:menu:active", (menu) => @update menu
 
   update: (menu) ->
     @model.set "menu", menu
 
   show: ->
-    view = new Header.View model: @model
+    view = new HeaderView model: @model
     @region.show view
 
   hide: ->

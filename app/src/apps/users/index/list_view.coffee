@@ -1,6 +1,8 @@
-Index = CRUD.module "Users.Index"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Index.UserRowView extends Marionette.ItemView
+class UserRowView extends Backbone.Marionette.ItemView
 
   tagName: "tr"
   template: "#user-row"
@@ -16,9 +18,9 @@ class Index.UserRowView extends Marionette.ItemView
       ]
     ".email": "email"
 
-class Index.UserListView extends Marionette.CompositeView
+module.exports = class UserListView extends Backbone.Marionette.CompositeView
 
-  itemView: Index.UserRowView
+  itemView: UserRowView
   itemViewContainer: "tbody"
   template: "#users-index-list"
   triggers:

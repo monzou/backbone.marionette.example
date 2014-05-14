@@ -1,7 +1,8 @@
-Search = CRUD.module "Users.Search"
-Index  = CRUD.module "Users.Index"
+"use strict"
+Backbone = require "backbone"
+CRUD     = require "app/app"
 
-class Index.HeaderView extends Marionette.ItemView
+module.exports = class HeaderView extends Backbone.Marionette.ItemView
 
   template: "#users-index-header"
   behaviors:

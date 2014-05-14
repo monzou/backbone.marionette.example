@@ -22,15 +22,6 @@
   </div>
   <div id="main-region" class="container"></div>
 
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/underscore.string/lib/underscore.string.js"></script>
-  <script src="bower_components/backbone/backbone.js"></script>
-  <script src="bower_components/marionette/lib/backbone.marionette.js"></script>
-  <script src="bower_components/backbone.stickit/backbone.stickit.js"></script>
-  <script src="scripts/main.js"></script>
-
   <script id="header" type="text/template">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -140,10 +131,8 @@
     </form>
   </script>
 
-  <script type="text/javascript">
-      "use strict";
-      CRUD.start();
-  </script>
-
+  <script src="scripts/vendor.js"></script>
+  <script src="scripts/app.js"></script>
+  
 </body>
 </html>

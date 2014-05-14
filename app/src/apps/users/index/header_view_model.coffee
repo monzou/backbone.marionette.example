@@ -1,3 +1,4 @@
-Index  = CRUD.module "Users.Index"
+"use strict"
+ViewModel = require "app/common/view_model"
 
-class Index.HeaderViewModel extends CRUD.Common.ViewModel
+module.exports = class HeaderViewModel extends ViewModel

@@ -11,15 +11,87 @@ module.exports = (grunt) ->
 
   grunt.initConfig
 
+    browserify:
+      vendor:
+        files: "app/scripts/vendor.js": [ "app/src/vendor.coffee" ]
+        options:
+          extensions: [ ".coffee" ]
+          transform: [ "coffeeify" ]
+          shim:
+            "jquery":
+              path: "app/bower_components/jquery/dist/jquery.js"
+              exports: "$"
+            "underscore":
+              path: "app/bower_components/underscore/underscore.js"
+              exports: "_"
+            "underscore.string":
+              path: "app/bower_components/underscore.string/lib/underscore.string.js"
+              exports: "_s"
+              depends:
+                "underscore": "underscore"
+            "backbone":
+              path: "app/bower_components/backbone/backbone.js"
+              exports: "Backbone"
+              depends:
+                "underscore": "underscore"
+            "backbone.babysitter":
+              path: "app/bower_components/backbone.babysitter/lib/backbone.babysitter.js"
+              exports: "Backbone.Babysitter"
+              depends:
+                backbone: "Backbone"
+            "backbone.wreqr":
+              path: "app/bower_components/backbone.wreqr/lib/backbone.wreqr.js"
+              exports: "Backbone.Wreqr"
+              depends:
+                backbone: "Backbone"
+            "backbone.marionette":
+              path: "app/bower_components/marionette/lib/backbone.marionette.js"
+              exports: "Backbone.Marionette"
+              depends:
+                "jquery": "$"
+                "backbone": "Backbone"
+                "underscore": "_"
+            "backbone.stickit":
+              path: "app/bower_components/backbone.stickit/backbone.stickit.js"
+              exports: "Stickit"
+              depends:
+                "underscore": "_"
+                "backbone": "Backbone"
+      app:
+        files: "app/scripts/app.js": [ "app/src/main.coffee" ]
+        options:
+          ignore: [ "app/src/vendor.coffee" ]
+          extensions: [ ".coffee" ]
+          transform: [ "coffeeify" ]
+          aliasMappings: [{
+            cwd: "app/src"
+            dest: "app"
+            src: [ "**/*.coffee" ]
+          }]
+          external: [
+            "jquery"
+            "underscore"
+            "underscore.string"
+            "backbone"
+            "backbone.babysitter"
+            "backbone.wreqr"
+            "backbone.marionette"
+            "backbone.stickit"
+          ]
+
     watch:
 
       options:
         nospawn: true
         livereload: LIVERELOAD_PORT
 
-      coffee:
-        files: [ "app/src/**/*.coffee" ]
-        tasks: [ "coffee:compile" ]
+      app:
+        files: [ "app/src/**/*.coffee", "!app/src/vendor.coffee" ]
+        tasks: [ "browserify:app" ]
+
+      vendor:
+        files: [ "app/src/vendor.coffee" ]
+        tasks: [ "browserify:vendor" ]
 
       livereload:
         files: [ "app/**/*.{html,css,js}" ]
@@ -45,27 +117,9 @@ module.exports = (grunt) ->
       server:
         path: "http://localhost:<%= connect.options.port %>"
 
-    coffee:
-      compile:
-        files:
-          "app/scripts/main.js": [
-            "app/src/initializer.coffee"
-            "app/src/app.coffee"
-            "app/src/launcher.coffee"
-            "app/src/lib/**/*.coffee"
-            "app/src/common/**/*.coffee"
-            "app/src/model/**/*.coffee"
-            "app/src/apps/**/common/**/*model.coffee"
-            "app/src/apps/**/common/**/*view.coffee"
-            "app/src/apps/**/new/*.coffee"
-            "app/src/apps/**/edit/*.coffee"
-            "app/src/apps/**/index/**/*.coffee"
-            "app/src/apps/**/index/*.coffee"
-            "app/src/apps/**/*.coffee"
-          ]
 
   grunt.registerTask "default", [
-    "coffee:compile"
+    "browserify"
     "connect:livereload"
     "open"
     "watch"

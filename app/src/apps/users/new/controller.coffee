@@ -1,7 +1,12 @@
-Model = CRUD.module "Model"
-New   = CRUD.module "Users.New"
+"use strict"
+Backbone       = require "backbone"
+CRUD           = require "app/app"
+User           = require "app/model/user"
+UserRepository = require "app/repository/users"
+ViewModel      = require "app/apps/users/new/view_model"
+View           = require "app/apps/users/new/view"
 
-class New.Controller extends Marionette.Controller
+module.exports = class Controller extends Backbone.Marionette.Controller
 
   constructor: (@region) ->
     _.bindAll @, "save", "goToIndex"
@@ -13,13 +18,13 @@ class New.Controller extends Marionette.Controller
     @region.show view
 
   createView: ->
-    model = new Model.User
-    viewModel = new New.ViewModel {}, model: model
-    new New.View model: viewModel
+    model = new User
+    viewModel = new ViewModel {}, model: model
+    new View model: viewModel
 
   save: (params) ->
     model = params.model.commit()
-    Model.UserRepository.save(model).done @goToIndex
+    UserRepository.save(model).done @goToIndex
 
   goToIndex: ->
     CRUD.execute "action:users:list"
