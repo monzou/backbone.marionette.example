@@ -5,7 +5,7 @@ Backbone = require "backbone"
 class CRUD extends Backbone.Marionette.Application
 
   root: ""
-  version: "v1"
+  version: "v2"
 
   constructor: ->
     super
