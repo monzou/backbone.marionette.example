@@ -8,7 +8,6 @@ module.exports = class HeaderController extends Backbone.Marionette.Controller
 
   constructor: (@region) ->
     @model = new HeaderViewModel
-    @listenTo CRUD, "set:menu:active", (menu) => @update menu
 
   update: (menu) ->
     @model.set "menu", menu
