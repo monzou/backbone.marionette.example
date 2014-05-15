@@ -34,7 +34,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a>Active Menu: <span class="activeMenu"></span></a></li>
+        <li><a>Active Menu: <span name="menu"></span></a></li>
         <li><a href="https://github.com/monzou/backbone.marionette.example" data-bypass>GitHub Project</a></li>
       </ul>
     </div>
@@ -68,7 +68,7 @@
             <fieldset>
               <div class="row">
                 <div class="form-group col-sm-12">
-                  <input id="query" type="text" class="form-control" placeholder="Filter by Name">
+                  <input id="query" name="query" type="text" class="form-control" placeholder="Filter by Name">
                 </div>
               </div>
             </fieldset>
@@ -95,34 +95,34 @@
       <span class="selected-users"></span> user(s) selected.
     </div>
     <div class="row users-bottom-actions">
-      <button class="btn btn-danger delete-button">Delete selected users</button>
+      <button class="btn btn-danger btn-delete">Delete selected users</button>
     </div>
   </script>
 
   <script id="user-form" type="text/template">
     <form role="form">
       <fieldset>
-        <legend id="title"></legend>
+        <legend name="title"></legend>
         <div class="row">
           <div class="form-group col-md-6">
             <label for="firstName">First Name</label>
-            <input id="firstName" type="text" class="form-control" placeholder="First Name">
+            <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name">
           </div>
           <div class="form-group col-md-6">
             <label for="lastName">Last Name</label>
-            <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+            <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name">
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="email">Email address</label>
-            <input id="email" type="email" class="form-control" placeholder="Email">
+            <input id="email" name="email" type="email" class="form-control" placeholder="Email">
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="remarks">Remarks</label>
-            <textarea id="remarks" class="form-control" placeholder="Remarks" rows="3"></textarea>
+            <textarea id="remarks" name="remarks" class="form-control" placeholder="Remarks" rows="3"></textarea>
           </div>
         </div>
         <button class="btn btn-default cancel-button" type="button">Cancel</button>
@@ -133,6 +133,6 @@
 
   <script src="scripts/vendor.js"></script>
   <script src="scripts/app.js"></script>
-  
+
 </body>
 </html>

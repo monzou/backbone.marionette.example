@@ -7,11 +7,10 @@ module.exports = class HeaderView extends Backbone.Marionette.ItemView
   template: "#header"
 
   behaviors:
-    binding: {}
-  bindings:
-    ".activeMenu": "menu"
-    ".navbar-brand":
-      attributes: [
-        name: "href"
-        onGet: -> CRUD.request "route:users:list"
-      ]
+    stickit:
+      bindings:
+        ".navbar-brand":
+          attributes: [
+            name: "href"
+            onGet: -> CRUD.request "route:users:list"
+          ]
