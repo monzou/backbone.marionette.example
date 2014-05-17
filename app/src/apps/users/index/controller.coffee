@@ -20,7 +20,7 @@ module.exports = class Controller extends Backbone.Marionette.Controller
     @region.show @createView()
     @refreshUsers()
 
-  createView: (collection) ->
+  createView: ->
     headerView = @createHeaderView()
     listView = @createListView()
     new View headerView: headerView, listView: listView

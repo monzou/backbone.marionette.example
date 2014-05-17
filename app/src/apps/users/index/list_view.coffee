@@ -24,17 +24,17 @@ module.exports = class UserListView extends Backbone.Marionette.CompositeView
   itemViewContainer: "tbody"
   template: "#users-index-list"
   triggers:
-    "click .btn-delete": "users:selected:delete"
+    "click .delete-button": "users:selected:delete"
   behaviors:
     stickit:
       bindings:
         ".selected-info":
           observe: "selectedUsers"
           visible: (value) -> value and value.length > 0
-        ".selected-users":
+        ".selected-users-count":
           observe: "selectedUsers"
           onGet: (value) -> if value then value.length else 0
-        ".btn-delete":
+        ".delete-button":
           attributes: [
             observe: "selectedUsers"
             name: "disabled"

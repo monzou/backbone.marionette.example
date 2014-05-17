@@ -8,7 +8,7 @@ module.exports = class HeaderView extends Backbone.Marionette.ItemView
   behaviors:
     stickit:
       bindings:
-        ".btn-new":
+        ".new-button":
           attributes: [
             name: "href"
             onGet: -> CRUD.request "route:users:new"
