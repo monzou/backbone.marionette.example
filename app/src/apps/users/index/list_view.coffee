@@ -20,8 +20,8 @@ class UserRowView extends Backbone.Marionette.ItemView
 
 module.exports = class UserListView extends Backbone.Marionette.CompositeView
 
-  itemView: UserRowView
-  itemViewContainer: "tbody"
+  childView: UserRowView
+  childViewContainer: "tbody"
   template: "#users-index-list"
   triggers:
     "click .delete-button": "users:selected:delete"

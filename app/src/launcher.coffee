@@ -25,4 +25,4 @@ class Launcher
     Backbone.history.start pushState: true, root: root
 
 launcher = new Launcher
-CRUD.on "initialize:after", -> launcher.launch CRUD.root
+CRUD.on "start", -> launcher.launch CRUD.root

@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "underscore.string": "~2.3.3",
-    "marionette": "~1.8.5",
+    "marionette": "~2.0.1",
     "backbone.stickit": "~0.8.0",
     "bootstrap": "~3.1.1"
   }

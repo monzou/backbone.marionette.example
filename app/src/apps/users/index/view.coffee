@@ -1,7 +1,7 @@
 "use strict"
 Backbone = require "backbone"
 
-module.exports = class View extends Backbone.Marionette.Layout
+module.exports = class View extends Backbone.Marionette.LayoutView
 
   template: "#users-index"
   regions:

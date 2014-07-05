@@ -17,4 +17,4 @@ module.exports = class HeaderController extends Backbone.Marionette.Controller
     @region.show view
 
   hide: ->
-    @region.close()
+    @region.destroy()

@@ -41,7 +41,7 @@ class StickitBindingBehavior extends Backbone.Marionette.Behavior
     @view.bindings = @createBindings @$el, @options.attr, @options.ignores
     @view.stickit()
 
-  onClose: ->
+  onDestroy: ->
     @view.unstickit()
 
 Backbone.Marionette.Behaviors.behaviorsLookup = ->
