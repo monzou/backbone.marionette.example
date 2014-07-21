@@ -2,7 +2,7 @@
 
 MVVM-flavored example CRUD app with [Backbone.Marionette](https://github.com/marionettejs/backbone.marionette) + [Backbone.stickit](http://nytimes.github.io/backbone.stickit/) + [Browserify](http://browserify.org/).
 
-![image](image.png)
+![image](/image.png?raw=true)
 
 Code here is **work in progress**.
 
